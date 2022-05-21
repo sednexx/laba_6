@@ -28,7 +28,8 @@ public class Test {
             System.out.println("not found");
         }
 
-        //-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
+        // ---
+
         System.out.println("\n\nRabin-Karp algorithm is running...");
 
         System.out.println("Searching for 'there': ");
@@ -52,7 +53,8 @@ public class Test {
             System.out.println("not found");
         }
 
-        //-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
+        // ---
+
         System.out.println("\n\nKnuth-Morris-Pratt algorithm is running...");
 
         System.out.println("Searching for 'there': ");
@@ -76,7 +78,8 @@ public class Test {
             System.out.println("not found");
         }
 
-        //-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
+        // ---
+
         String sentence_A = "AAAAAAAAAAAAAA";
 
         System.out.println("Our text: " + sentence_A);
@@ -90,7 +93,8 @@ public class Test {
             System.out.println("not found");
         }
 
-        //-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
+        // ---
+
         System.out.println("\n\nRabin-Karp algorithm is running...");
 
         System.out.println("Searching for 'AAA': ");
@@ -100,7 +104,8 @@ public class Test {
             System.out.println("not found");
         }
 
-        //-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
+        // ---
+
         System.out.println("\n\nKnuth-Morris-Pratt algorithm is running...");
 
         System.out.println("Searching for 'AAA': ");

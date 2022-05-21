@@ -7,22 +7,26 @@ public class SubString {
         String[] split_image = image.split("");
 
         image_arr.add(1);
-        for(int i = image.length() - 2; i >= 0; i--) {
-            for(int j = image.length() - 2; j > i; j--) {
-                if(split_image[i].equals(split_image[j])) {
+        for (int i = image.length() - 2; i >= 0; i--) {
+            for (int j = image.length() - 2; j > i; j--) {
+                if (split_image[i].equals(split_image[j])) {
                     image_arr.add(0, image.length() - 1 - j);
                     break;
                 }
-                if(j - 1 == i) { image_arr.add(0, image.length() - 1 - i);}
+                if (j - 1 == i) {
+                    image_arr.add(0, image.length() - 1 - i);
+                }
             }
         }
 
-        for(int i = image.length() - 2; i >= 0; i--) {
-            if(split_image[split_image.length - 1].equals(split_image[i])) {
+        for (int i = image.length() - 2; i >= 0; i--) {
+            if (split_image[split_image.length - 1].equals(split_image[i])) {
                 image_arr.add(image.length() - 1 - i);
                 break;
             }
-            if(i == 0) { image_arr.add(image.length() - 1); }
+            if (i == 0) {
+                image_arr.add(image.length() - 1);
+            }
         }
         return image_arr;
     }
@@ -34,12 +38,12 @@ public class SubString {
         ArrayList<Integer> image_arr = to_arr(image);
         int exists = 0;
         int k = image.length() - 1;
-        while(k < text.length()) {
+        while (k < text.length()) {
             int i = image.length() - 1;
             int count = 0;
 
-            while(i >= 0 && k >= 0 && split_image[i].equals(split_text[k])) {
-                if(i == 0) {
+            while (i >= 0 && k >= 0 && split_image[i].equals(split_text[k])) {
+                if (i == 0) {
                     System.out.println("Found our substring: [" + k + ", " + (k + image.length() - 1) + "]");
                     exists = 1;
                 }
@@ -50,18 +54,21 @@ public class SubString {
 
             k += count;
 
-            for(int j = 0; j < image.length(); j++) {
-                if(split_image[j].equals(split_text[k])) {
+            for (int j = 0; j < image.length(); j++) {
+                if (split_image[j].equals(split_text[k])) {
                     k += image_arr.get(j);
                     break;
                 }
-                if(j == image.length() - 1) { k += image.length(); }
+                if (j == image.length() - 1) {
+                    k += image.length();
+                }
             }
         }
         return exists;
     }
 
-    //*************************************************
+    // ---
+
     static int q = 101;
     static int d = 256;
 
@@ -83,23 +90,24 @@ public class SubString {
             t = (d * t + text.charAt(i)) % q;
         }
 
-        // Slide the pattern over text one by one
+        // ---
+
         for (i = 0; i <= N - M; i++) {
 
-            if ( p == t ) {
+            if (p == t) {
                 for (j = 0; j < M; j++) {
-                    if (text.charAt(i+j) != image.charAt(j))
+                    if (text.charAt(i + j) != image.charAt(j))
                         break;
                 }
 
                 if (j == M) {
-                   exist = 1;
+                    exist = 1;
                     System.out.println("Found our substring: [" + i + ", " + (i + image.length() - 1) + "]");
                 }
             }
 
-            if ( i < N-M ) {
-                t = (d*(t - text.charAt(i)*h) + text.charAt(i+M))%q;
+            if (i < N - M) {
+                t = (d * (t - text.charAt(i) * h) + text.charAt(i + M)) % q;
 
                 if (t < 0)
                     t = (t + q);
@@ -108,19 +116,20 @@ public class SubString {
         return exist;
     }
 
-    //*************************************************
+    // ---
+
     ArrayList<Integer> first_step(String image) {
         String[] split_image = image.split("");
         ArrayList<Integer> pi = new ArrayList<>(image.length());
-        for(int i = 0; i < image.length(); i++) {
+        for (int i = 0; i < image.length(); i++) {
             pi.add(-1);
         }
         pi.set(0, 0);
 
         int i = 1, j = 0;
-        while(i < image.length()) {
-            if(!split_image[i].equals(split_image[j])) {
-                if(j == 0) {
+        while (i < image.length()) {
+            if (!split_image[i].equals(split_image[j])) {
+                if (j == 0) {
                     pi.set(i, 0);
                     i++;
                 } else {
@@ -142,18 +151,18 @@ public class SubString {
         int exists = 0;
 
         int k = 0, l = 0;
-        while(k < text.length()) {
-            if(split_text[k].equals(split_image[l])) {
+        while (k < text.length()) {
+            if (split_text[k].equals(split_image[l])) {
                 k++;
                 l++;
-                if(l == image.length()) {
+                if (l == image.length()) {
                     System.out.println("Found our substring: [" + (k - image.length()) + ", " + (k - 1) + "]");
                     exists = 1;
                     l--;
                 }
-            } else if(!split_text[k].equals(split_image[l]) && l != 0) {
+            } else if (!split_text[k].equals(split_image[l]) && l != 0) {
                 l = pi.get(l - 1);
-            } else if(!split_text[k].equals(split_image[l]) && l == 0) {
+            } else if (!split_text[k].equals(split_image[l]) && l == 0) {
                 k++;
             }
         }
